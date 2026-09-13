@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Smart Campus Network — Digital Twin</title>
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+<header class="bar">
+  <div class="bar-id">
+    <span class="dot" id="pulse"></span>
+    <h1>Smart Campus Network</h1>
+    <p>Digital twin of the Packet Tracer topology</p>
+  </div>
+  <div class="bar-health">
+    <div class="health-figure"><span id="health">—</span><i>%</i></div>
+    <div class="health-label">network health</div>
+    <div class="health-track"><div class="health-fill" id="healthFill"></div></div>
+  </div>
+</header>
+
+<main>
+  <!-- hero: the live topology -->
+  <section class="panel panel-map">
+    <div class="panel-head">
+      <h2>Live topology</h2>
+      <p id="mapNote">All links up</p>
+    </div>
+    <div class="map-wrap">
+      <svg id="map" viewBox="0 0 1280 490" preserveAspectRatio="xMidYMid meet" role="img" aria-label="Network topology"></svg>
+    </div>
+    <ul class="legend">
+      <li><i class="sw-online"></i>online</li>
+      <li><i class="sw-warning"></i>degraded</li>
+      <li><i class="sw-offline"></i>offline</li>
+      <li><i class="sw-unknown"></i>unauthorised</li>
+    </ul>
+  </section>
+
+  <!-- controls -->
+  <section class="panel panel-run">
+    <div class="panel-head"><h2>Run a scenario</h2><p>Each run writes an event, an alert and a fault record.</p></div>
+    <div class="runs">
+      <button data-scenario="link-failure">Break the core link to SW-USERS</button>
+      <button data-scenario="device-failure">Take SW-USERS offline</button>
+      <button data-scenario="high-traffic">Push traffic past the threshold</button>
+      <button data-scenario="unauthorized-device">Join an unregistered device</button>
+      <button data-scenario="restore" class="restore">Restore the network</button>
+    </div>
+  </section>
+
+  <!-- fault analysis -->
+  <section class="panel panel-fault">
+    <div class="panel-head"><h2>Fault analysis</h2></div>
+    <div id="fault" class="fault empty">Nothing to analyse. The network is running normally.</div>
+  </section>
+
+  <!-- security -->
+  <section class="panel panel-sec">
+    <div class="panel-head"><h2>Security status</h2></div>
+    <dl class="sec" id="security"></dl>
+  </section>
+
+  <!-- automation -->
+  <section class="panel panel-auto">
+    <div class="panel-head"><h2>Automation</h2><p id="autoTrigger">Waiting for a trigger.</p></div>
+    <ol class="flow" id="flow"></ol>
+  </section>
+
+  <!-- devices -->
+  <section class="panel panel-dev">
+    <div class="panel-head"><h2>Devices</h2><p id="devCount"></p></div>
+    <div class="table-wrap">
+      <table id="devices">
+        <thead><tr><th>Device</th><th>Packet Tracer</th><th>VLAN</th><th>Address</th><th>State</th></tr></thead>
+        <tbody></tbody>
+      </table>
+    </div>
+  </section>
+
+  <!-- events -->
+  <section class="panel panel-log">
+    <div class="panel-head"><h2>Events and alerts</h2></div>
+    <ul class="log" id="log"></ul>
+  </section>
+</main>
+
+<script src="app.js"></script>
+</body>
+</html>
