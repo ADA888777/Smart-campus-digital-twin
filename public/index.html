@@ -12,7 +12,7 @@
   <div class="bar-id">
     <span class="dot" id="pulse"></span>
     <h1>Smart Campus Network</h1>
-    <p>Digital twin of the Packet Tracer topology</p>
+    <p>Software model of the Packet Tracer topology - simulated, not connected to Packet Tracer</p>
   </div>
   <div class="bar-health">
     <div class="health-figure"><span id="health">—</span><i>%</i></div>
@@ -41,7 +41,7 @@
 
   <!-- controls -->
   <section class="panel panel-run">
-    <div class="panel-head"><h2>Run a scenario</h2><p>Each run writes an event, an alert and a fault record.</p></div>
+    <div class="panel-head"><h2>Run a scenario</h2><p>Each run changes this digital twin only, then writes an event, an alert and a fault record. Nothing is sent to Packet Tracer.</p></div>
     <div class="runs">
       <button data-scenario="link-failure">Break the core link to SW-USERS</button>
       <button data-scenario="device-failure">Take SW-USERS offline</button>
@@ -53,7 +53,7 @@
 
   <!-- fault analysis -->
   <section class="panel panel-fault">
-    <div class="panel-head"><h2>Fault analysis</h2></div>
+    <div class="panel-head"><h2>Fault analysis</h2><p>Blast radius computed from the twin topology</p></div>
     <div id="fault" class="fault empty">Nothing to analyse. The network is running normally.</div>
   </section>
 
@@ -85,7 +85,8 @@
     <div class="panel-head"><h2>Events and alerts</h2></div>
     <ul class="log" id="log"></ul>
   </section>
-</main>
+<p style="margin:20px 4px 0;font-size:12px;line-height:1.7;opacity:.6">This dashboard is a digital twin: a software model of the Packet Tracer topology, not a live connection to it. Latency, packet loss and availability are simulated values produced by the twin engine from the modelled device state, not measurements read from Packet Tracer or from real hardware. Scenario actions change the state of this twin and its own event, alert and fault records only; no Packet Tracer device is modified.</p>
+  </main>
 
 <script src="app.js"></script>
 </body>
